@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person API</title>
+</head>
+<body>
+    <h1>Person API</h1>
+
+    <form action="/add" method="post">
+        <div>
+           <label for="title">Person Name</label>
+           <input type="text" name="title" placeholder="Enter name...">
+           <br>
+           <button type="submit">Add</button>
+        </div>
+    </form>
+
+    {% for person in person_list %}
+        <p> {{ person.id }} | {{ person.name }} </p>
+
+        {% if person.complete == False %}
+             <span>Not Complete</span>
+        {% else %}
+             <span>Completed</span>
+        {% endif %}
+
+        <a href="/update/{{ person.id }}">Update</a>
+        <a href="/delete/{{ person.id }}">Delete</a>
+
+
+    {% endfor %}
+
+</body>
+</html>
